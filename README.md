@@ -1,5 +1,5 @@
 # Dot Matrix Game Boy Printer
-I [(Matt)](https://mattg.co.uk) Have forked gbpxl and messed around with it to get it working with my [Epson LX-350 Dot Matrix Printer](https://www.epson.co.uk/en_GB/products/printers/dot-matrix/lx-350/p/11849), which can accept [ESC/P commands](https://files.support.epson.com/htmldocs/lx350_/lx350_ug/html/apspe_3.htm#S-00900-00300-00100).
+I [(Matt)](https://mattg.co.uk) Have forked [gbpxl](https://github.com/xx0x/gbpxl) (a Game Boy Printer to ESC/POS converter) and messed around with it to get it working with my [Epson LX-350 Dot Matrix Printer](https://www.epson.co.uk/en_GB/products/printers/dot-matrix/lx-350/p/11849), which can accept [ESC/P commands](https://files.support.epson.com/htmldocs/lx350_/lx350_ug/html/apspe_3.htm#S-00900-00300-00100).
 
 ##Curent Setup
 Arduino Nano Every -> TTL-RS232 Converter -> Epson LX-350 Serial Port.
