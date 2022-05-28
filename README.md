@@ -1,4 +1,27 @@
-# gbpxl
+# Dot Matrix Game Boy Printer
+I [(Matt)](https://mattg.co.uk) Have forked gbpxl and messed around with it to get it working with my Epson LX-350 Dot Matrix Printer, which can accept ESC/P commands.
+
+##Curent Setup
+Arduino Nano Every -> TTL-RS232 Converter -> Epson LX-350 Serial Port.
+
+No DIP Switches or buttons have been installed.
+
+## Issues
+
+* It only works in 3x scale mode.
+	* Other scale modes just print seemingly random characters
+* With the default line spacing of 24, there's a gap between each line.
+* Reducing the line spacing to 13 removes the gap, but then the aspect ratio is all out. (Is there data that it isn't printing maybe?
+
+### Line Spacing 24
+![printed game boy camera photo with gaps between each line](dot matrix images/dot matrix line spacing 24.jpg)
+
+### Line Spacing 13
+![printed game boy camera photo with no gaps between each line but it looks squished.](dot matrix images/dot matrix line spacing 13.jpg)
+
+
+
+# gbpxl - Original Documentation
 
 **Game Boy Printer XL**
 
