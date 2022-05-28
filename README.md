@@ -1,10 +1,10 @@
 # Dot Matrix Game Boy Printer
-I [(Matt)](https://mattg.co.uk) Have forked gbpxl and messed around with it to get it working with my Epson LX-350 Dot Matrix Printer, which can accept ESC/P commands.
+I [(Matt)](https://mattg.co.uk) Have forked gbpxl and messed around with it to get it working with my [Epson LX-350 Dot Matrix Printer](https://www.epson.co.uk/en_GB/products/printers/dot-matrix/lx-350/p/11849), which can accept [ESC/P commands](https://files.support.epson.com/htmldocs/lx350_/lx350_ug/html/apspe_3.htm#S-00900-00300-00100).
 
 ##Curent Setup
 Arduino Nano Every -> TTL-RS232 Converter -> Epson LX-350 Serial Port.
 
-No DIP Switches or buttons have been installed.
+No DIP Switches or buttons have been installed. Options are manually set in the code, and the update dip function has been commented out.
 
 ## Issues
 
@@ -20,6 +20,8 @@ No DIP Switches or buttons have been installed.
 ![printed game boy camera photo with no gaps between each line but it looks squished.](https://github.com/MattGrayYes/gbpxl/blob/master/dot%20matrix%20images/dot%20matrix%20line%20spacing%2013.jpg?raw=true)
 
 
+
+---
 
 # gbpxl - Original Documentation
 
