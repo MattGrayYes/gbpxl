@@ -11,7 +11,8 @@ No DIP Switches or buttons have been installed. Options are manually set in the 
 * It only works in 3x scale mode.
 	* Other scale modes just print seemingly random characters
 * With the default line spacing of 24, there's a gap between each line.
-* Reducing the line spacing to 13 removes the gap, but then the aspect ratio is all out. (Is there data that it isn't printing maybe?
+	* I have tested my setup on an ESC/POS receipt printer, and it prints fine without the gaps between the lines
+	* Reducing the line spacing to 13 removes the gap, but then the aspect ratio is all out. (Is there data that it isn't printing maybe?
 
 ### Line Spacing 24
 ![printed game boy camera photo with gaps between each line](https://github.com/MattGrayYes/gbpxl/blob/master/dot%20matrix%20images/dot%20matrix%20line%20spacing%2024.jpg?raw=true))
