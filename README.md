@@ -14,10 +14,10 @@ No DIP Switches or buttons have been installed.
 * Reducing the line spacing to 13 removes the gap, but then the aspect ratio is all out. (Is there data that it isn't printing maybe?
 
 ### Line Spacing 24
-![printed game boy camera photo with gaps between each line](dot matrix images/dot matrix line spacing 24.jpg)
+![printed game boy camera photo with gaps between each line](https://github.com/MattGrayYes/gbpxl/blob/master/dot%20matrix%20images/dot%20matrix%20line%20spacing%2024.jpg?raw=true))
 
 ### Line Spacing 13
-![printed game boy camera photo with no gaps between each line but it looks squished.](dot matrix images/dot matrix line spacing 13.jpg)
+![printed game boy camera photo with no gaps between each line but it looks squished.](https://github.com/MattGrayYes/gbpxl/blob/master/dot%20matrix%20images/dot%20matrix%20line%20spacing%2013.jpg?raw=true)
 
 
 
