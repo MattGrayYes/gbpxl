@@ -334,7 +334,7 @@ void printEscAsterisk3x()
     // send data
     epson_write(27);                   // ESC
     epson_write(42);                   // *
-    epson_write(1);                    // 8-dot double density
+    epson_write(7);                    // 8-dot double density MG 1
     epson_write(imgWidth & 0xFF);      // nL
     epson_write(imgWidth >> 8 & 0xFF); // nH
     for (lbi = 0; lbi < IMG_WIDTH; lbi++)
