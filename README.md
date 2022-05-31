@@ -4,13 +4,13 @@ I [(Matt)](https://mattg.co.uk) Have forked [gbpxl](https://github.com/xx0x/gbpx
 I've done this in order to display at [Electromagnetic Field 2022](https://emfcamp.org/)
 
 ##Curent Setup
-Arduino Nano Every -> TTL-RS232 Converter -> Epson LX-350 Serial Port.
+Game Boy Link Cable -> Arduino Nano Every -> TTL-RS232 Converter -> Null Modem Cable -> Epson LX-350 Serial Port.
 
-No DIP Switches or buttons have been installed. Options are manually set in the code, and the update dip function has been commented out.
+No DIP Switches or buttons have been installed unlike the original build. Options are manually set in the code, and the update dip function has been commented out.
 
-![Dot Matrix Printer, with Game Boy Camera plugged into it.](./dot matrix images/full setup.jpg)
+![Dot Matrix Printer, with Game Boy Camera plugged into it.](https://github.com/MattGrayYes/gbpxl/raw/master/dot%20matrix%20images/full%20setup.jpg)
 
-![EMF 2022 Poster: Matt Gray's Dot Matrix Photo Printer](./dot matrix images/poster.jpg)
+![EMF 2022 Poster: Matt Gray's Dot Matrix Photo Printer](https://github.com/MattGrayYes/gbpxl/raw/master/dot%20matrix%20images/poster.jpg)
 
 ## Issues
 This code works completely fine on my normal mini receipt printer. I'm trying to use it on a 9-pin dot-matrix printer, which only supports a subset of the ESC/P commands.
@@ -28,12 +28,12 @@ This is printing using the `ESC *` Select bit image command. See [ESC/P Referenc
 
 There appears to be two versions of this function. one for `ESC/P` and one for `9-pin ESC/P`
 
-* My printer is a 9-pin printer, which only supports "ESC * Bit Image" printing in 8-dot columns.
+* My printer is a 9-pin printer, which only supports `ESC *` Bit Image printing in 8-dot columns.
 * 3x printing function uses 8-dot columns, so can print OK.
 	* This function only has a scaling value to repeat columns, and scale the width. The height remains constant at 144 lines.
 	* The data appears to come 8 lines at a time. I don't know enough about bitwise stuff to get it to repeat lines to increase the height. The best i could do by wanging different numbers into the code was to repeat 8 lines at a time. Which isn't what i wanted :D
 * 2x printing function uses 24-dot columns, so doesn't work.
-	* Telling this function to print in an 8-dot mode as part of the "ESC *" command doesn't help, It just prints out gobbledegook.
+	* Telling this function to print in an 8-dot mode as part of the `ESC *` command doesn't help, It just prints out gobbledegook.
 	* I assume this is because the data is structured expecting it to be 24 dot density not.
 	* I don't know enough about bitwise stuff to make it work
 
@@ -45,7 +45,7 @@ I've ended up using a 3x width scale and density mode 7, (144x72). This provides
 
 `ESC * m` for values (1,5,3) of m
 
-![3 printouts, all of the same height but different width](./dot matrix images/dot matrix mode 153.jpg)
+![3 printouts, all of the same height but different width](https://github.com/MattGrayYes/gbpxl/raw/master/dot%20matrix%20images/dot%20matrix%20mode%20153.jpg)
 
 
 
