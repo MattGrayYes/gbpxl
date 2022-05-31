@@ -220,6 +220,7 @@ void loop()
     gbp_printer.uptime_til_timeout_ms = 0;
   }
 
+
   // If new data recieved or button pushed, start print
   if (schedulePrint || !digitalRead(PIN_BTN))
   {
@@ -348,7 +349,19 @@ void printEscAsterisk3x()
     epson_write(10); // LF
   }
 
-  int lfcount = 40;
+  epson_linespacing(30);
+  epson_write(10); // LF
+  epson_write(10); // LF
+  epson_println("Matt Gray's Dot Matrix Photo Printer");
+  epson_println("mattg.co.uk | @MattGrayYes");
+  
+  epson_write(10); // LF
+  epson_println("Printed at Electromagnetic Field 2022");
+  epson_println("emfcamp.org | @EMFCamp");
+
+  epson_feed(1);
+
+  int lfcount = 17;
   while(lfcount>0)
   {
       epson_write(10);
