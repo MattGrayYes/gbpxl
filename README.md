@@ -1,24 +1,53 @@
 # Dot Matrix Game Boy Printer
 I [(Matt)](https://mattg.co.uk) Have forked [gbpxl](https://github.com/xx0x/gbpxl) (a Game Boy Printer to ESC/POS converter) and messed around with it to get it working with my [Epson LX-350 Dot Matrix Printer](https://www.epson.co.uk/en_GB/products/printers/dot-matrix/lx-350/p/11849), which can accept [ESC/P commands](https://files.support.epson.com/htmldocs/lx350_/lx350_ug/html/apspe_3.htm#S-00900-00300-00100).
 
+I've done this in order to display at [Electromagnetic Field 2022](https://emfcamp.org/)
+
 ##Curent Setup
 Arduino Nano Every -> TTL-RS232 Converter -> Epson LX-350 Serial Port.
 
 No DIP Switches or buttons have been installed. Options are manually set in the code, and the update dip function has been commented out.
 
+![Dot Matrix Printer, with Game Boy Camera plugged into it.](./dot matrix images/full setup.jpg)
+
+![EMF 2022 Poster: Matt Gray's Dot Matrix Photo Printer](./dot matrix images/poster.jpg)
+
 ## Issues
+This code works completely fine on my normal mini receipt printer. I'm trying to use it on a 9-pin dot-matrix printer, which only supports a subset of the ESC/P commands.
 
-* It only works in 3x scale mode.
-	* Other scale modes just print seemingly random characters
+I'm hacking this together with only the slightest amount of decades-old C knowledge, so I don't expect to be able to magically figure it out.
+
+When using the ESC * 3x print function, I can get it to print. I can change values in that function to scale the width, but the height remains fixed at 144 lines. I can then change the 8-dot print density modes to fix the aspect ratio.
+
 * With the default line spacing of 24, there's a gap between each line.
-	* I have tested my setup on an ESC/POS receipt printer, and it prints fine without the gaps between the lines
-	* Reducing the line spacing to 13 removes the gap, but then the aspect ratio is all out. (Is there data that it isn't printing maybe?
+	* Reducing the line spacing to 13 removes the gap.
 
-### Line Spacing 24
-![printed game boy camera photo with gaps between each line](https://github.com/MattGrayYes/gbpxl/blob/master/dot%20matrix%20images/dot%20matrix%20line%20spacing%2024.jpg?raw=true))
+I'd like to scale it bigger, so it fits the whole width of a page, but in my poking about I couldn't get it to scale the height. I realise i probably "just" need it to repeat each line, but its all using bitwise stuff that I don't understand. Here's what I've worked out so far about how it works:
 
-### Line Spacing 13
-![printed game boy camera photo with no gaps between each line but it looks squished.](https://github.com/MattGrayYes/gbpxl/blob/master/dot%20matrix%20images/dot%20matrix%20line%20spacing%2013.jpg?raw=true)
+This is printing using the `ESC *` Select bit image command. See [ESC/P Reference (pages C-177 - C-179)](https://files.support.epson.com/pdf/general/escp2ref.pdf).
+
+There appears to be two versions of this function. one for `ESC/P` and one for `9-pin ESC/P`
+
+* My printer is a 9-pin printer, which only supports "ESC * Bit Image" printing in 8-dot columns.
+* 3x printing function uses 8-dot columns, so can print OK.
+	* This function only has a scaling value to repeat columns, and scale the width. The height remains constant at 144 lines.
+	* The data appears to come 8 lines at a time. I don't know enough about bitwise stuff to get it to repeat lines to increase the height. The best i could do by wanging different numbers into the code was to repeat 8 lines at a time. Which isn't what i wanted :D
+* 2x printing function uses 24-dot columns, so doesn't work.
+	* Telling this function to print in an 8-dot mode as part of the "ESC *" command doesn't help, It just prints out gobbledegook.
+	* I assume this is because the data is structured expecting it to be 24 dot density not.
+	* I don't know enough about bitwise stuff to make it work
+
+
+### Changing the 8-dot density mode
+I've ended up using a 3x width scale and density mode 7, (144x72). This provides the closest approximation to the proper aspect ratio
+
+#### Other density modes
+
+`ESC * m` for values (1,5,3) of m
+
+![3 printouts, all of the same height but different width](./dot matrix images/dot matrix mode 153.jpg)
+
+
 
 
 
